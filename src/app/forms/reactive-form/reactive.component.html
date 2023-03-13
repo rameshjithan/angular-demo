@@ -1,0 +1,139 @@
+<div class="m-4">
+<h1 class="border-bottom pb-3 mb-4">Registration Form</h1>
+<form [formGroup]="reactiveForm" (ngSubmit)="postData()" class="needs-validation" action="/examples/actions/confirmation.php" method="post" novalidate>
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label" for="firstName">First Name:</label>
+        <div class="col-sm-9">
+            <input type="text" class="form-control" id="firstName" placeholder="First Name" formControlName="firstName" required>
+            <span class="error" *ngIf="reactiveForm.get('firstName').touched && reactiveForm.get('firstName').hasError('required')">Enter First Name</span>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label" for="lastName">Last Name:</label>
+        <div class="col-sm-9">
+            <input type="text" class="form-control" id="lastName" placeholder="Last Name" formControlName="lastName" required>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label" for="emailAddress">Email Address:</label>
+        <div class="col-sm-9">
+            <input type="email" class="form-control" id="emailAddress" placeholder="Email Address" formControlName="emailAddress" required>  
+            <span class="error" *ngIf="reactiveForm.get('emailAddress').touched && reactiveForm.get('emailAddress').hasError('required')">Enter Email Address</span>
+            <span class="error" *ngIf="reactiveForm.get('emailAddress').touched && reactiveForm.get('emailAddress').hasError('email')">Enter valid Email Address</span>
+            <span class="error" *ngIf="reactiveForm.get('emailAddress').touched && reactiveForm.get('emailAddress').hasError('minLength')">Enter minimun 5 character</span>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label" for="phoneNumber">Mobile Number:</label>
+        <div class="col-sm-9">
+            <input type="number" class="form-control" id="phoneNumber" placeholder="Phone Number" formControlName="phoneNumber" required>
+        </div>
+    </div>        
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Date of Birth:</label>
+        <div class="col-sm-3">
+            <select class="form-select" required>
+                <option value="">Date</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+                <option value="13">13</option>
+                <option value="14">14</option>
+                <option value="15">15</option>
+                <option value="16">16</option>
+                <option value="17">17</option>
+                <option value="18">18</option>
+                <option value="19">19</option>
+                <option value="20">20</option>
+                <option value="21">21</option>
+                <option value="22">22</option>
+                <option value="23">23</option>
+                <option value="24">24</option>
+                <option value="25">25</option>
+                <option value="26">26</option>
+                <option value="27">27</option>
+                <option value="28">28</option>
+                <option value="29">29</option>
+                <option value="30">30</option>
+                <option value="31">31</option>
+            </select>
+        </div>
+        <div class="col-sm-3">
+            <select class="form-select" required>
+                <option value="">Month</option>
+                <option value="1">January</option>
+                <option value="2">February</option>
+                <option value="3">March</option>
+                <option value="4">April</option>
+                <option value="5">May</option>
+                <option value="6">June</option>
+                <option value="7">July</option>
+                <option value="8">August</option>
+                <option value="9">September</option>
+                <option value="10">October</option>
+                <option value="11">November</option>
+                <option value="12">December</option>
+            </select>
+        </div>
+        <div class="col-sm-3">
+            <select class="form-select">
+                <option>Year</option>
+            </select>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label" for="postalAddress">Postal Address:</label>
+        <div class="col-sm-9">
+            <textarea rows="3" class="form-control" id="postalAddress" placeholder="Postal Address" formControlName="postalAddress" required></textarea>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label" for="ZipCode">Zip Code:</label>
+        <div class="col-sm-9">
+            <input type="text" class="form-control" id="ZipCode" placeholder="Zip Code" formControlName="ZipCode" >
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label" for="uploadImage">Upload Image:</label>
+        <div class="col-sm-9">
+            <input type="file" class="form-control" id="uploadImage">
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Gender:</label>
+        <div class="col-sm-9 mt-2">
+            <div class="form-check form-check-inline">
+                <input type="radio" class="form-check-input" formControlName="gender" name="gender" id="radioMale">
+                <label class="form-check-label" for="radioMale">Male</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input type="radio" formControlName="gender" class="form-check-input" name="gender" id="radioFemale">
+                <label class="form-check-label" for="radioFemale">Female</label>
+            </div>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-sm-9 offset-sm-3">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="checkAgree" value="agree" formControlName="terms" >
+                <label class="form-check-label" for="checkAgree">I agree to the <a href="#">Terms and Conditions</a></label>
+            </div>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-sm-9 offset-sm-3">
+            <input type="submit" class="btn btn-primary" [disabled]="!reactiveForm" value="Submit">
+            <input type="reset" class="btn btn-secondary ms-2" value="Reset">
+        </div>
+    </div>
+</form>
+</div>
